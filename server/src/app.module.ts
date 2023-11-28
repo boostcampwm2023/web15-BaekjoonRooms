@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { ClassifiedModule } from './classified/classified.module';
 import { PassportModule } from '@nestjs/passport';
+import { Example2Module } from './example2/example2.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { PassportModule } from '@nestjs/passport';
     }),
     AuthModule,
     ClassifiedModule,
+    Example2Module,
   ],
   controllers: [AppController],
   providers: [AppService],
