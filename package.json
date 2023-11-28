@@ -4,5 +4,9 @@
   },
   "scripts": {
     "prepare": "husky install"
+  },
+  "dependencies": {
+    "@nestjs/platform-socket.io": "^10.2.10",
+    "@nestjs/websockets": "^10.2.10"
   }
 }
