@@ -3,7 +3,7 @@
     {
       "name": "Player1",
       "score": 100,
-      "results": ["CORRECT", "WRONG", "SOLVING"]
+      "results": ["CORRECT", "WRONG", "SOLVING", "SOLVING"]
     },
     {
       "name": "Player2",
@@ -13,7 +13,12 @@
     {
       "name": "Player3",
       "score": 300,
-      "results": ["WRONG", "SOLVING", "CORRECT"]
+      "results": ["WRONG", "SOLVING"]
+    },
+    {
+      "name": "Player4",
+      "score": 300,
+      "results": ["SOLVING"]
     }
   ]
 }

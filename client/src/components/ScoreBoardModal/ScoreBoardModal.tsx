@@ -34,7 +34,7 @@ export default function ScoreBoardModal({
       style={{ backdropFilter: 'blur(10px)' }}
       ref={modalOverlayRef}
       onClick={modalOutsideClick}>
-      <div className="relative flex h-[430px] w-[calc(50%-100px)] flex-col items-center rounded-2xl border-[0.5px] border-aod_gutter bg-aod_bg">
+      <div className="relative flex h-[430px] w-[330px] flex-col items-center rounded-2xl border-[0.5px] border-aod_gutter bg-aod_bg">
         <button className="absolute right-4 top-4" onClick={closeModal}>
           <FaXmark style={iconStyle} />
         </button>

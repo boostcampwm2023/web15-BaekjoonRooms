@@ -12,13 +12,13 @@ export default function Room() {
   const roomCode = location.state?.roomCode;
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-aod_fg">
-      <div className="z-10 flex min-h-screen w-[50%] min-w-[300px] flex-col items-center gap-2 rounded-lg bg-aod_bg p-4 shadow-2xl">
-        <RoomInfo roomCode={roomCode}/>
+    <div className="flex min-h-screen items-center justify-center bg-aod_fg">
+      <div className="z-10 flex min-h-screen w-[388px] flex-col items-center gap-2 rounded-lg bg-aod_bg p-4 shadow-2xl">
+        <RoomInfo />
         <Problems isHost={isHost} />
         <ScoreboardButton />
+        <StartButton isHost={isHost} />
         <Chat />
-        <StartButton />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { RefObject, useState } from 'react';
+import { RefObject, useState, Dispatch, SetStateAction } from 'react';
 
 import SelectProblem from './SelectProblem';
 import RandomProblem from './RandomProblem';
@@ -7,11 +7,14 @@ import { FaXmark } from 'react-icons/fa6';
 import { FaToggleOff } from 'react-icons/fa6';
 import { FaToggleOn } from 'react-icons/fa6';
 import Dropdown from '../Dropdown';
+import { ProblemType } from '../../types/ProblemType';
 
 interface RoomSettingModalProps {
   modalOverlayRef: RefObject<HTMLDivElement>;
   closeModal: () => void;
   modalOutsideClick: (arg: React.MouseEvent<HTMLDivElement>) => void;
+  problems: ProblemType[];
+  setProblems: Dispatch<SetStateAction<ProblemType[]>>;
 }
 
 const iconStyle = {
@@ -22,9 +25,17 @@ export default function RoomSettingModal({
   modalOverlayRef,
   closeModal,
   modalOutsideClick,
+  problems,
+  setProblems,
 }: RoomSettingModalProps) {
-  const [problem, setProblem] = useState('');
-  const [problemList, setProblemList] = useState<string[]>([]);
+  const [problem, setProblem] = useState<ProblemType>({
+    title: '',
+    boj_problem_id: '',
+    url: '',
+    level: '',
+    tag: [],
+  });
+  const [problemList, setProblemList] = useState<ProblemType[]>(problems);
   const [isRandom, setIsRandom] = useState<boolean>(false);
 
   const toggleType = () => {
@@ -33,6 +44,11 @@ export default function RoomSettingModal({
 
   const handleTimeClick = (option: number) => {
     console.log(option);
+  };
+
+  const settingComplete = () => {
+    setProblems(problemList);
+    closeModal();
   };
 
   return (
@@ -81,7 +97,9 @@ export default function RoomSettingModal({
             itemBoxClassName="border border-aod_gutter rounded-lg"
             itemClassName="hover:opacity-80 bg-aod_fg text-sm text-aod_text py-1 odd:bg-aod_gutter"
           />
-          <button className="rounded-lg bg-aod_accent px-5 py-1 text-sm text-aod_white hover:opacity-80">
+          <button
+            className="rounded-lg bg-aod_accent px-5 py-1 text-sm text-aod_white hover:opacity-80"
+            onClick={settingComplete}>
             설정 완료
           </button>
         </div>
