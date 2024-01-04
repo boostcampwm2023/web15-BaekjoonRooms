@@ -2,8 +2,10 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    fontFamily: {
-      sans: ['Pretendard'],
+    extend: {
+      fontFamily: {
+        sans: ['Pretendard'],
+      },
     },
     colors: {
       default_black: 'rgb(0 0 0 / <alpha-value>)',
@@ -31,7 +33,6 @@ export default {
       level_ruby: 'rgb(var(--color--level-ruby) / <alpha-value>)',
       transparent: 'transparent',
     },
-    extend: {},
   },
   plugins: [],
 };
