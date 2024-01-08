@@ -9,17 +9,15 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <LocalStorageProvider>
-          <ThemeProvider>
-            <AuthProvider>
-              <Outlet />
-            </AuthProvider>
-          </ThemeProvider>
-        </LocalStorageProvider>
-      </QueryClientProvider>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <LocalStorageProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <Outlet />
+          </AuthProvider>
+        </ThemeProvider>
+      </LocalStorageProvider>
+    </QueryClientProvider>
   );
 }
 
