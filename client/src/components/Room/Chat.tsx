@@ -27,23 +27,6 @@ export default function Chat() {
 
   const socket = socketRef.current;
 
-  function insertNewlines(text: string, width: number): string {
-    const words = text.split(' ');
-    let lineLength = 0;
-    let result = '';
-
-    words.forEach((word) => {
-      if (lineLength + word.length > width) {
-        result += '\n';
-        lineLength = 0;
-      }
-      result += word + ' ';
-      lineLength += word.length + 1;
-    });
-
-    return result;
-  }
-
   function handleSubmitMessage(event: React.SyntheticEvent) {
     event.preventDefault();
 
@@ -58,11 +41,10 @@ export default function Chat() {
       return;
     }
 
-    const inputText = insertNewlines(inputRef.current.value.trim(), 40);
     const newChatMessage: MessageInterface = {
       timestamp: Date.now(),
       username: user?.username || 'Anonymous',
-      body: inputText,
+      body: inputRef.current.value.trim(),
       chatEvent: ChatEvent.Message,
     };
 
