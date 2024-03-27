@@ -1,6 +1,5 @@
 import { ReactNode, createContext, useEffect, useRef, useState } from 'react';
 import { Socket, io } from 'socket.io-client';
-import { useLocalStorage } from './useLocalStorage';
 import { MessageInterface } from '../types/Message';
 import { RoomInfoType } from '../types/RoomInfoType';
 import { ProblemType } from '../types/ProblemType';
@@ -13,8 +12,6 @@ export type RoomContextType = {
   inputRef: React.RefObject<HTMLTextAreaElement>;
   messagesRef: React.RefObject<HTMLUListElement>;
   socketRef: React.RefObject<Socket | null>;
-  getItem: (key: string) => string | null;
-  setItem: (key: string, value: string) => void;
   messages: MessageInterface[];
   setMessages: React.Dispatch<React.SetStateAction<MessageInterface[]>>;
   roomInfo: RoomInfoType;
@@ -46,7 +43,6 @@ export const RoomProvider: React.FC<RoomProviderProps> = ({ children }) => {
   const messagesRef = useRef<HTMLUListElement>(null);
   const socketRef = useRef<Socket | null>(null);
 
-  const { getItem, setItem } = useLocalStorage();
   const [messages, setMessages] = useState<MessageInterface[]>([]);
 
   const [roomInfo, setRoomInfo] = useState<RoomInfoType>({} as RoomInfoType);
@@ -89,8 +85,6 @@ export const RoomProvider: React.FC<RoomProviderProps> = ({ children }) => {
         inputRef,
         messagesRef,
         socketRef,
-        getItem,
-        setItem,
         messages,
         setMessages,
         roomInfo,
